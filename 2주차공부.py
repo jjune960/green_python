@@ -38,7 +38,7 @@ print(df_t.head())
 # %%
 # df_t.columns = df_t.iloc[0]
 print(df_t.columns)
-print(df_t[2:3])
+print(df_t[:2])
 
 # df_t[0:3]: 0, 1, 2번 행 (총 3개)
 
@@ -129,6 +129,32 @@ plt.grid(axis='y', linestyle='--', alpha=0.3) # 보조선 추가
 # 막대 위에 숫자 표시
 for i, v in enumerate(df_plot):
     ax.text(i, v + 0.1, str(int(v)), ha='center', fontweight='bold')
+
+plt.show()
+
+
+
+# %%
+# 2. 시각화 설정
+# width=0.8 혹은 0.9 정도로 설정하면 막대가 두꺼워지며 서로 가까워집니다.
+ax = df_plot.plot(kind='barh', 
+                  color=['#3498db', '#e67e22'], # 각각 다른 색상
+                  width=.8,                     # 막대 두께 (간격 조절)
+                  figsize=(6, 5)) #표사이즈 비율로 확인
+
+# 3. x축 세부 설정 (0부터 5까지, 1단위)
+plt.xlim(0, 2) 
+# plt.xticks(np.arange(0, 6, 1)) 
+plt.xticks([0, 1, 2])
+
+# 4. 기타 스타일 정리
+plt.title(f"{df_filtered['년월'].iloc[0]} report", fontsize=14, pad=15)
+plt.yticks(rotation=0) # x축 글자 똑바로
+plt.grid(axis='x', linestyle='--', alpha=0.3) # 보조선 추가
+
+# 막대 위에 숫자 표시
+for i, v in enumerate(df_plot):
+    ax.text(v + 0.1,i, str(int(v)), ha='center', fontweight='bold')
 
 plt.show()
 
