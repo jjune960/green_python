@@ -135,3 +135,4 @@ plt.xticks(rotation=0, fontsize=11)
 plt.grid(axis='y', linestyle='--', alpha=0.5)
 plt.tight_layout()
 plt.show()
+# %%
